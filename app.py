@@ -400,13 +400,8 @@ def student_profile():
     db.close()
     return render_template('student/profile.html', student=stu)
 
-# Call init_db at module level so gunicorn picks it up
-try:
-    init_db()
-except Exception as e:
-    print(f'init_db error: {e}')
-
 if __name__ == '__main__':
+    init_db()
     app.run(debug=True)
 
 # ── PWA routes ────────────────────────────────────────────────
@@ -440,3 +435,25 @@ def pwa_sw():
     resp.headers['Content-Type'] = 'application/javascript'
     resp.headers['Service-Worker-Allowed'] = '/'
     return resp
+
+
+# ── Auto-init DB (works with gunicorn) ───────────────────────
+@app.route('/setup')
+def setup():
+    """Emergency route to initialize the database."""
+    try:
+        init_db()
+        return "Database initialized successfully! <a href='/admin/login'>Go to Admin Login</a>"
+    except Exception as e:
+        return f"Error: {e}"
+
+# Initialize on first request
+@app.before_request
+def auto_init():
+    """Initialize DB before first request."""
+    import os
+    if not os.path.exists('anik_tech.db'):
+        try:
+            init_db()
+        except Exception as e:
+            print(f"Auto init error: {e}")
