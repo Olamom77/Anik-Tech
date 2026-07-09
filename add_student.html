@@ -1,0 +1,40 @@
+{% extends "admin/base.html" %}
+{% block title %}Add Student – Admin{% endblock %}
+{% block content %}
+<h1 class="admin-page-title">Add New Student</h1>
+<div class="admin-card" style="max-width:580px;">
+  <form method="POST" style="display:flex;flex-direction:column;gap:1rem;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div><label class="form-label">Full Name *</label><input type="text" name="name" class="form-input" required placeholder="Amara Okafor"></div>
+      <div><label class="form-label">Email Address *</label><input type="email" name="email" class="form-input" required placeholder="amara@aniktech.edu.ng"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div>
+        <label class="form-label">Program *</label>
+        <select name="program" class="form-input" required>
+          <option value="">Select program</option>
+          <option>Computer Science</option>
+          <option>Data Science</option>
+          <option>Cybersecurity</option>
+          <option>Software Engineering</option>
+          <option>Artificial Intelligence</option>
+          <option>Computer Networking</option>
+        </select>
+      </div>
+      <div>
+        <label class="form-label">Level *</label>
+        <select name="level" class="form-input" required>
+          <option value="">Select level</option>
+          <option>100L</option><option>200L</option><option>300L</option><option>400L</option><option>500L (MSc)</option>
+        </select>
+      </div>
+    </div>
+    <div><label class="form-label">Temporary Password *</label><input type="text" name="password" class="form-input" required placeholder="e.g. Welcome2026!"></div>
+    <p style="font-size:12px;color:#888;background:#f9f9f9;padding:10px;border-radius:8px;">📧 A welcome email with login credentials will be sent to the student automatically.</p>
+    <div style="display:flex;gap:1rem;">
+      <button type="submit" class="btn-primary" style="border:none;cursor:pointer;padding:11px 24px;">Add Student & Send Email</button>
+      <a href="/admin/students" class="btn-secondary" style="padding:11px 24px;">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

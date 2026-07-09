@@ -1,0 +1,32 @@
+{% extends "admin/base.html" %}
+{% block title %}Announcements – Admin{% endblock %}
+{% block content %}
+<h1 class="admin-page-title">Announcements</h1>
+<div class="admin-card" style="max-width:600px;margin-bottom:2rem;">
+  <h2 style="font-size:15px;font-weight:500;margin-bottom:1rem;">Post New Announcement</h2>
+  <form method="POST" style="display:flex;flex-direction:column;gap:1rem;">
+    <div><label class="form-label">Title *</label><input type="text" name="title" class="form-input" required placeholder="e.g. Exam Timetable Released"></div>
+    <div><label class="form-label">Message *</label><textarea name="body" class="form-input" rows="4" required placeholder="Write the announcement…"></textarea></div>
+    <button type="submit" class="btn-primary" style="border:none;cursor:pointer;padding:11px;">Publish Announcement</button>
+  </form>
+</div>
+<div class="admin-card">
+  <h2 style="font-size:15px;font-weight:500;margin-bottom:1rem;">Published ({{ announcements|length }})</h2>
+  {% if announcements %}
+    {% for a in announcements %}
+    <div style="border-bottom:1px solid #f0f0f0;padding:1rem 0;display:flex;justify-content:space-between;align-items:flex-start;">
+      <div style="flex:1;">
+        <strong style="font-size:14px;">{{ a.title }}</strong>
+        <p style="font-size:13px;color:#666;margin-top:4px;line-height:1.5;">{{ a.body }}</p>
+        <p style="font-size:11px;color:#bbb;margin-top:4px;">{{ a.created_at }} · by {{ a.author }}</p>
+      </div>
+      <form method="POST" action="/admin/announcements/delete/{{ a.id }}" onsubmit="return confirm('Delete?')" style="margin-left:1rem;flex-shrink:0;">
+        <button type="submit" style="background:none;border:none;color:#c00;cursor:pointer;font-size:12px;">Delete</button>
+      </form>
+    </div>
+    {% endfor %}
+  {% else %}
+    <p style="color:#888;font-size:13px;">No announcements yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

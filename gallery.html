@@ -1,0 +1,246 @@
+{% extends "base.html" %}
+{% block title %}Gallery – Anik Tech School{% endblock %}
+{% block content %}
+
+<section class="section page-hero">
+  <div class="section-inner">
+    <div class="section-label">Gallery</div>
+    <h1 class="section-title">Life at Anik Tech</h1>
+    <p class="section-sub">A glimpse into our campus, labs, events, and student life.</p>
+  </div>
+</section>
+
+<!-- Filter Tabs -->
+<div style="background:#fff;border-bottom:1px solid #e8e8e8;position:sticky;top:65px;z-index:50;">
+  <div style="max-width:960px;margin:0 auto;padding:0 2rem;display:flex;gap:0.5rem;overflow-x:auto;">
+    <button class="gal-filter active" data-filter="all">All Photos</button>
+    <button class="gal-filter" data-filter="campus">Campus</button>
+    <button class="gal-filter" data-filter="labs">Labs & Tech</button>
+    <button class="gal-filter" data-filter="students">Student Life</button>
+    <button class="gal-filter" data-filter="events">Events</button>
+  </div>
+</div>
+
+<!-- Masonry Gallery Grid -->
+<section class="section" style="padding-top:2.5rem;">
+  <div style="max-width:960px;margin:0 auto;padding:0 2rem;">
+    <div class="gallery-grid" id="galleryGrid">
+
+      <!-- Campus -->
+      <div class="gal-item" data-cat="campus" data-title="Main Campus Building">
+        <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80" alt="Main Campus">
+        <div class="gal-overlay"><span>Main Campus Building</span></div>
+      </div>
+      <div class="gal-item gal-wide" data-cat="campus" data-title="Campus Entrance">
+        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1000&q=80" alt="Campus Entrance">
+        <div class="gal-overlay"><span>Campus Entrance</span></div>
+      </div>
+      <div class="gal-item" data-cat="campus" data-title="Campus Library">
+        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80" alt="Library">
+        <div class="gal-overlay"><span>Campus Library</span></div>
+      </div>
+      <div class="gal-item" data-cat="campus" data-title="Sports Complex">
+        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80" alt="Sports">
+        <div class="gal-overlay"><span>Sports Complex</span></div>
+      </div>
+      <div class="gal-item gal-tall" data-cat="campus" data-title="Study Halls">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80" alt="Study Hall">
+        <div class="gal-overlay"><span>Study Halls</span></div>
+      </div>
+
+      <!-- Labs -->
+      <div class="gal-item gal-wide" data-cat="labs" data-title="Computer Science Lab">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1000&q=80" alt="CS Lab">
+        <div class="gal-overlay"><span>Computer Science Lab</span></div>
+      </div>
+      <div class="gal-item" data-cat="labs" data-title="AI & Robotics Lab">
+        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80" alt="Robotics">
+        <div class="gal-overlay"><span>AI & Robotics Lab</span></div>
+      </div>
+      <div class="gal-item" data-cat="labs" data-title="Cybersecurity Centre">
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80" alt="Cybersec">
+        <div class="gal-overlay"><span>Cybersecurity Centre</span></div>
+      </div>
+      <div class="gal-item" data-cat="labs" data-title="Data Science Studio">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Data Science">
+        <div class="gal-overlay"><span>Data Science Studio</span></div>
+      </div>
+      <div class="gal-item gal-tall" data-cat="labs" data-title="Hardware Lab">
+        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80" alt="Hardware Lab">
+        <div class="gal-overlay"><span>Hardware Lab</span></div>
+      </div>
+
+      <!-- Students -->
+      <div class="gal-item" data-cat="students" data-title="Students Collaborating">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80" alt="Collaboration">
+        <div class="gal-overlay"><span>Students Collaborating</span></div>
+      </div>
+      <div class="gal-item gal-wide" data-cat="students" data-title="Lecture Session">
+        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1000&q=80" alt="Lecture">
+        <div class="gal-overlay"><span>Lecture Session</span></div>
+      </div>
+      <div class="gal-item" data-cat="students" data-title="Group Project">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Group Work">
+        <div class="gal-overlay"><span>Group Project</span></div>
+      </div>
+      <div class="gal-item" data-cat="students" data-title="Student Lounge">
+        <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&q=80" alt="Lounge">
+        <div class="gal-overlay"><span>Student Lounge</span></div>
+      </div>
+
+      <!-- Events -->
+      <div class="gal-item gal-wide" data-cat="events" data-title="Annual Tech Summit 2025">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1000&q=80" alt="Tech Summit">
+        <div class="gal-overlay"><span>Annual Tech Summit 2025</span></div>
+      </div>
+      <div class="gal-item" data-cat="events" data-title="Graduation Ceremony">
+        <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=800&q=80" alt="Graduation">
+        <div class="gal-overlay"><span>Graduation Ceremony</span></div>
+      </div>
+      <div class="gal-item" data-cat="events" data-title="Hackathon 2025">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt="Hackathon">
+        <div class="gal-overlay"><span>Hackathon 2025</span></div>
+      </div>
+      <div class="gal-item gal-tall" data-cat="events" data-title="Industry Career Fair">
+        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&q=80" alt="Career Fair">
+        <div class="gal-overlay"><span>Industry Career Fair</span></div>
+      </div>
+
+    </div><!-- /gallery-grid -->
+
+    <p style="text-align:center;font-size:12px;color:#ccc;margin-top:2rem;">
+      📷 Photos from Anik Tech School Campus · Jabi District, Abuja
+    </p>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;align-items:center;justify-content:center;flex-direction:column;">
+  <button id="lbClose" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:#fff;font-size:28px;cursor:pointer;line-height:1;">✕</button>
+  <button id="lbPrev"  style="position:absolute;left:1.5rem;background:none;border:none;color:#fff;font-size:36px;cursor:pointer;line-height:1;">‹</button>
+  <button id="lbNext"  style="position:absolute;right:1.5rem;background:none;border:none;color:#fff;font-size:36px;cursor:pointer;line-height:1;">›</button>
+  <img id="lbImg" src="" alt="" style="max-width:88vw;max-height:82vh;border-radius:10px;object-fit:contain;">
+  <p id="lbCaption" style="color:#ddd;font-size:14px;margin-top:1rem;text-align:center;"></p>
+  <p style="color:#888;font-size:12px;margin-top:4px;" id="lbCount"></p>
+</div>
+
+<style>
+/* Filter buttons */
+.gal-filter {
+  background: none; border: none; font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 500; color: #888; padding: 14px 16px;
+  cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+.gal-filter:hover { color: #1a1a1a; }
+.gal-filter.active { color: #185FA5; border-bottom-color: #185FA5; }
+
+/* Masonry grid */
+.gallery-grid {
+  columns: 3;
+  column-gap: 14px;
+}
+.gal-item {
+  break-inside: avoid;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.gal-wide { column-span: all; columns: unset; }
+.gal-item img {
+  width: 100%; display: block;
+  transition: transform 0.4s ease;
+  object-fit: cover;
+}
+.gal-item:hover img { transform: scale(1.04); }
+.gal-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.25s;
+  display: flex; align-items: flex-end; padding: 14px;
+}
+.gal-item:hover .gal-overlay { opacity: 1; }
+.gal-overlay span { color: #fff; font-size: 13px; font-weight: 500; }
+.gal-item.hidden { display: none; }
+
+@media (max-width: 700px) {
+  .gallery-grid { columns: 2; }
+}
+@media (max-width: 480px) {
+  .gallery-grid { columns: 1; }
+}
+</style>
+
+<script>
+// ── Filter ──────────────────────────────────────────────
+const filters = document.querySelectorAll('.gal-filter');
+const items   = document.querySelectorAll('.gal-item');
+
+filters.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filters.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    items.forEach(item => {
+      item.classList.toggle('hidden', f !== 'all' && item.dataset.cat !== f);
+    });
+  });
+});
+
+// ── Lightbox ────────────────────────────────────────────
+const lb        = document.getElementById('lightbox');
+const lbImg     = document.getElementById('lbImg');
+const lbCaption = document.getElementById('lbCaption');
+const lbCount   = document.getElementById('lbCount');
+let current = 0;
+let visible = [];
+
+function openLightbox(idx) {
+  visible = [...items].filter(i => !i.classList.contains('hidden'));
+  current = idx;
+  showSlide(current);
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function showSlide(i) {
+  const item = visible[i];
+  lbImg.src = item.querySelector('img').src;
+  lbCaption.textContent = item.dataset.title || '';
+  lbCount.textContent = `${i + 1} / ${visible.length}`;
+}
+
+items.forEach((item, idx) => {
+  item.addEventListener('click', () => {
+    visible = [...items].filter(i => !i.classList.contains('hidden'));
+    const visIdx = visible.indexOf(item);
+    openLightbox(visIdx >= 0 ? visIdx : 0);
+  });
+});
+
+document.getElementById('lbClose').addEventListener('click', () => {
+  lb.style.display = 'none';
+  document.body.style.overflow = '';
+});
+document.getElementById('lbPrev').addEventListener('click', () => {
+  current = (current - 1 + visible.length) % visible.length;
+  showSlide(current);
+});
+document.getElementById('lbNext').addEventListener('click', () => {
+  current = (current + 1) % visible.length;
+  showSlide(current);
+});
+lb.addEventListener('click', e => {
+  if (e.target === lb) { lb.style.display = 'none'; document.body.style.overflow = ''; }
+});
+document.addEventListener('keydown', e => {
+  if (lb.style.display === 'flex') {
+    if (e.key === 'Escape') { lb.style.display = 'none'; document.body.style.overflow = ''; }
+    if (e.key === 'ArrowLeft')  { current = (current - 1 + visible.length) % visible.length; showSlide(current); }
+    if (e.key === 'ArrowRight') { current = (current + 1) % visible.length; showSlide(current); }
+  }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "admin/base.html" %}
+{% block title %}Students – Admin{% endblock %}
+{% block content %}
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+  <h1 class="admin-page-title" style="margin:0;">Students</h1>
+  <a href="/admin/students/add" class="btn-primary">+ Add Student</a>
+</div>
+<div class="admin-card">
+  {% if students %}
+  <table class="admin-table">
+    <thead><tr><th>Student ID</th><th>Name</th><th>Program</th><th>Level</th><th>GPA</th><th>Status</th><th>Joined</th><th></th></tr></thead>
+    <tbody>
+    {% for s in students %}
+      <tr>
+        <td><strong>{{ s.student_id }}</strong></td>
+        <td>{{ s.name }}</td>
+        <td>{{ s.program }}</td>
+        <td>{{ s.level }}</td>
+        <td><strong style="color:#185FA5;">{{ s.gpa }}</strong></td>
+        <td><span class="badge badge-green">{{ s.status }}</span></td>
+        <td>{{ s.joined }}</td>
+        <td>
+          <form method="POST" action="/admin/students/delete/{{ s.id }}" onsubmit="return confirm('Remove {{ s.name }}?')">
+            <button type="submit" style="background:none;border:none;color:#c00;cursor:pointer;font-size:12px;">Remove</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p style="color:#888;font-size:13px;">No students yet. <a href="/admin/students/add" style="color:#185FA5;">Add one →</a></p>
+  {% endif %}
+</div>
+{% endblock %}
