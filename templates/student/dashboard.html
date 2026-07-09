@@ -1,0 +1,45 @@
+{% extends "student/base.html" %}
+{% block title %}Dashboard – Student Portal{% endblock %}
+{% block content %}
+<h1 class="admin-page-title">Welcome back, {{ student.name.split()[0] }} 👋</h1>
+
+<div class="stats-grid">
+  <div class="stat-box"><div class="stat-num">{{ student.gpa }}</div><div class="stat-label">Current GPA</div></div>
+  <div class="stat-box"><div class="stat-num">{{ student.level }}</div><div class="stat-label">Current Level</div></div>
+  <div class="stat-box"><div class="stat-num" style="font-size:18px;padding-top:4px;">{{ student.status }}</div><div class="stat-label">Enrollment Status</div></div>
+  <div class="stat-box"><div class="stat-num" style="font-size:16px;padding-top:6px;">{{ student.program.split()[0] }}</div><div class="stat-label">{{ student.program }}</div></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;">
+  <div class="admin-card">
+    <div class="admin-card-header"><h2>My Information</h2><a href="/student/profile" style="font-size:12px;color:#185FA5;">Edit →</a></div>
+    <table style="width:100%;font-size:13px;border-collapse:collapse;">
+      <tr><td style="padding:7px 0;color:#888;">Student ID</td><td style="text-align:right;font-weight:500;">{{ student.student_id }}</td></tr>
+      <tr><td style="padding:7px 0;color:#888;">Email</td><td style="text-align:right;">{{ student.email }}</td></tr>
+      <tr><td style="padding:7px 0;color:#888;">Program</td><td style="text-align:right;">{{ student.program }}</td></tr>
+      <tr><td style="padding:7px 0;color:#888;">Level</td><td style="text-align:right;">{{ student.level }}</td></tr>
+      <tr><td style="padding:7px 0;color:#888;">Enrolled</td><td style="text-align:right;">{{ student.joined }}</td></tr>
+    </table>
+  </div>
+
+  <div class="admin-card">
+    <div class="admin-card-header"><h2>Announcements</h2></div>
+    {% if announcements %}
+      {% for a in announcements %}
+      <div style="border-bottom:1px solid #f5f5f5;padding:0.75rem 0;">
+        <strong style="font-size:13px;">{{ a.title }}</strong>
+        <p style="font-size:12px;color:#777;margin-top:3px;line-height:1.5;">{{ a.body[:90] }}{% if a.body|length > 90 %}…{% endif %}</p>
+        <p style="font-size:11px;color:#ccc;margin-top:3px;">{{ a.created_at }}</p>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p style="color:#888;font-size:13px;">No announcements.</p>
+    {% endif %}
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;">
+  <a href="/student/grades"  class="btn-primary"   style="text-align:center;padding:12px;">📊 View My Grades</a>
+  <a href="/student/courses" class="btn-secondary" style="text-align:center;padding:12px;">📚 View My Courses</a>
+</div>
+{% endblock %}
