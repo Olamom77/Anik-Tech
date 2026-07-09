@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+{% block title %}Messages – Admin{% endblock %}
+{% block content %}
+<h1 class="admin-page-title">Contact Messages</h1>
+<div class="admin-card">
+  {% if messages %}
+  <table class="admin-table">
+    <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Subject</th><th>Message</th><th>Date</th></tr></thead>
+    <tbody>
+    {% for m in messages %}
+      <tr>
+        <td><strong>{{ m.name }}</strong></td>
+        <td><a href="mailto:{{ m.email }}" style="color:#185FA5;">{{ m.email }}</a></td>
+        <td>{{ m.phone or '—' }}</td>
+        <td>{{ m.subject or '—' }}</td>
+        <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="{{ m.message }}">{{ m.message }}</td>
+        <td>{{ m.sent_at }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p style="color:#888;font-size:13px;">No messages yet.</p>
+  {% endif %}
+</div>
+{% endblock %}
