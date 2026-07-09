@@ -84,7 +84,7 @@ def init_db():
     # Seed admin — DELETE first so credentials always reset on redeploy
     c.execute("DELETE FROM admins")
     c.execute("INSERT INTO admins (username,password,name) VALUES (?,?,?)",
-              ('Abdulmalik Abdulgafar', hash_pw('Adeyinka77'), 'Abdulmalik Abdulgafar'))
+              ('abdulmalik', hash_pw('Adeyinka77'), 'Abdulmalik Abdulgafar'))
     # Seed student
     c.execute("INSERT OR IGNORE INTO students (student_id,name,email,password,program,level,gpa,joined) VALUES (?,?,?,?,?,?,?,?)",
               ('ANK/2024/001','Amara Okafor','amara@aniktech.edu.ng',hash_pw('student123'),
