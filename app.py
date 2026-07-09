@@ -457,3 +457,22 @@ def auto_init():
             init_db()
         except Exception as e:
             print(f"Auto init error: {e}")
+
+
+@app.route('/debug-admin')
+def debug_admin():
+    """Temporary debug route - shows admin credentials in DB."""
+    try:
+        db = get_db()
+        admins = db.execute("SELECT id, username, name FROM admins").fetchall()
+        db.close()
+        result = "<h2>Admins in database:</h2><ul>"
+        for a in admins:
+            result += f"<li>ID:{a['id']} | Username: <strong>{a['username']}</strong> | Name: {a['name']}</li>"
+        if not admins:
+            result += "<li>NO ADMINS FOUND - database is empty!</li>"
+        result += "</ul>"
+        result += "<br><a href='/setup'>Run Setup</a> | <a href='/admin/login'>Admin Login</a>"
+        return result
+    except Exception as e:
+        return f"Error: {e}<br><a href='/setup'>Run Setup</a>"
