@@ -81,8 +81,9 @@ def init_db():
             semester TEXT NOT NULL
         );
     ''')
-    # Seed admin
-    c.execute("INSERT OR IGNORE INTO admins (username,password,name) VALUES (?,?,?)",
+    # Seed admin — DELETE first so credentials always reset on redeploy
+    c.execute("DELETE FROM admins")
+    c.execute("INSERT INTO admins (username,password,name) VALUES (?,?,?)",
               ('Abdulmalik Abdulgafar', hash_pw('Adeyinka77'), 'Abdulmalik Abdulgafar'))
     # Seed student
     c.execute("INSERT OR IGNORE INTO students (student_id,name,email,password,program,level,gpa,joined) VALUES (?,?,?,?,?,?,?,?)",
