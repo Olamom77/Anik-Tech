@@ -400,8 +400,13 @@ def student_profile():
     db.close()
     return render_template('student/profile.html', student=stu)
 
-if __name__ == '__main__':
+# Call init_db at module level so gunicorn picks it up
+try:
     init_db()
+except Exception as e:
+    print(f'init_db error: {e}')
+
+if __name__ == '__main__':
     app.run(debug=True)
 
 # ── PWA routes ────────────────────────────────────────────────
