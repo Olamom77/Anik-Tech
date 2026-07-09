@@ -83,7 +83,7 @@ def init_db():
     ''')
     # Seed admin
     c.execute("INSERT OR IGNORE INTO admins (username,password,name) VALUES (?,?,?)",
-              ('admin', hash_pw('Adeyinka77'), 'Abdulmalik Abdulgafar'))
+              ('Abdulmalik Abdulgafar', hash_pw('Adeyinka77'), 'Abdulmalik Abdulgafar'))
     # Seed student
     c.execute("INSERT OR IGNORE INTO students (student_id,name,email,password,program,level,gpa,joined) VALUES (?,?,?,?,?,?,?,?)",
               ('ANK/2024/001','Amara Okafor','amara@aniktech.edu.ng',hash_pw('student123'),
